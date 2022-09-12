@@ -43,7 +43,7 @@ const NewCategories = () => {
                   ))}
                 </PostTags>
 
-                <LinkButton to="/posts/:id">Read More</LinkButton>
+                <LinkButton to={`/posts/${post.id}`}>Read More</LinkButton>
               </PostBody>{' '}
             </PostContainer>
           );

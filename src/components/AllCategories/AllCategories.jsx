@@ -18,9 +18,9 @@ const AllCategories = () => {
 
   return (
     <PostSection className="Posts">
-      {posts.slice(0, pagination).map((post, index) => {
+      {posts.slice(0, pagination).map((post) => {
         return (
-          <PostContainer key={index}>
+          <PostContainer key={post.id}>
             <PostHead>
               <img src={post?.author?.avatar} alt="image" />
               <NameDateContainer>
@@ -41,7 +41,7 @@ const AllCategories = () => {
                 ))}
               </PostTags>
 
-              <LinkButton to="/posts/:id">Read More</LinkButton>
+              <LinkButton to={`/posts/${post.id}`}>Read More</LinkButton>
             </PostBody>{' '}
           </PostContainer>
         );

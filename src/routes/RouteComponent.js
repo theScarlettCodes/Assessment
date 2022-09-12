@@ -15,7 +15,7 @@ const RouteComponent = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Posts />} />
-        <Route path="/posts/:id" element={<Details />} />
+        <Route path="/posts/:postId" element={<Details />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

@@ -185,6 +185,9 @@ const CategoryContainer = styled.div`
 const CategoryTitle = styled.h2`
   margin-top: 0;
   margin-bottom: 1rem;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 const CategoryItemContainer = styled.div`
   display: grid;

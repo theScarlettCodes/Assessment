@@ -37,7 +37,6 @@ const Color = styled.div`
 `;
 
 const HomeWrapper = styled.main`
-  position: relative;
   display: flex;
   width: 100%;
   flex: 1;
@@ -45,14 +44,22 @@ const HomeWrapper = styled.main`
   gap: 3rem;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const TextSection = styled.section`
   display: flex;
-  width: 40%;
+  width: 60%;
   flex-direction: column;
   margin-left: 3rem;
   padding-top: 0rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const TitleText = styled.h2`
   font-size: 4rem;
@@ -77,12 +84,11 @@ const LinkButton = styled(Link)`
   text-decoration: none;
 `;
 const PictureSection = styled.section`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  flex: 50%;
-  height: 50%;
-  /* width: 60%; */
+  width: 30%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export default Home;
