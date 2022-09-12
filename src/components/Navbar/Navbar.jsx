@@ -4,8 +4,6 @@ import styled from 'styled-components';
 
 import { Link, useLocation } from 'react-router-dom';
 
-import DefaultCursor from '../../assets/cursor-default.png';
-
 const Navbar = () => {
   const location = useLocation();
 
@@ -14,15 +12,17 @@ const Navbar = () => {
       <Logo className="logo">Assessment.</Logo>
       <NavMenu>
         <NavListWrapper>
-          <NavItem id="home">
-            <NavLink to="/">Home</NavLink>{' '}
-          </NavItem>
-          <NavItem id="post">
-            <NavLink to="/posts">Posts</NavLink>{' '}
-          </NavItem>
-          <NavItem>
-            <NavLink to="/design-story">Design Story</NavLink>{' '}
-          </NavItem>
+          <NavLink to="/">
+            {' '}
+            <NavItem id="home">Home </NavItem>
+          </NavLink>
+          <NavLink to="/posts">
+            <NavItem id="post">Posts </NavItem>
+          </NavLink>
+          <NavLink to="/design-story">
+            {' '}
+            <NavItem>Design Story</NavItem>
+          </NavLink>{' '}
         </NavListWrapper>
       </NavMenu>
     </NavWrapper>
@@ -54,10 +54,6 @@ const NavItem = styled.li`
     font-size: 1rem;
     font-weight: 400;
   }
-  &:hover {
-    color: #ccc;
-    cursor: url('../../assets/cursor-default.png'), auto;
-  }
 `;
 const NavLink = styled(Link)`
   & {
@@ -65,7 +61,8 @@ const NavLink = styled(Link)`
     text-decoration: none;
   }
   &:hover {
-    color: #ccc;
+    cursor: url('../../assets/cursor-hoverLink.png'), auto;
+    color: #24eba3;
   }
 `;
 

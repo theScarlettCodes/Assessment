@@ -6,11 +6,11 @@ import Container from './Container/Container';
 
 function App() {
   return (
-    <>
+    <main className="App">
       <Container>
         <RoutesComponent />
       </Container>
-    </>
+    </main>
   );
 }
 
