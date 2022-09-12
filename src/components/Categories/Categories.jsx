@@ -1,5 +1,5 @@
 // INCLUDE USEREF AND USECONTEXT HOOK
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, useState } from 'react';
 
 // INCLUDE SYTLED COMPONENTS
 import styled from 'styled-components';
@@ -13,12 +13,9 @@ const Categories = () => {
   const { selectedCategory, setSelectedCategory, showCategories } =
     useContext(GlobalStateContext);
 
-  const ref = useRef(null);
-
   // FUNCTION SETS THE ID OF THE CLICKED CATEGORY AND ASIGNS IT TO THE SELECTED-CATEGORY STATE
   const handleSelected = (e) => {
     setSelectedCategory(e.currentTarget.id);
-
     // console.log(ref.current.id);
   };
 
@@ -47,6 +44,7 @@ const Categories = () => {
             key={category.id}
             id={category.toString()}
             onClick={handleSelected}
+            selected={selectedCategory === category.toString()}
           >
             {category}
           </CategoryItem>
@@ -86,20 +84,22 @@ const CategoryItem = styled.div`
     display: flex;
     align-items: center;
     text-align: left;
-    background: #1c1c1c;
+    background: ${(props) => (props.selected ? 'white' : '#1c1c1c')};
+    color: ${(props) => (props.selected ? '#1c1c1c' : 'white')};
+    border: 2.5px solid ${(props) => (props.selected ? '#1c1c1c' : 'white')};
     width: 10rem;
     height: 1rem;
-    color: #fff;
     font-size: 0.9rem;
     font-weight: 400;
     padding: 1rem;
     margin: 0.5rem 0;
-  }
-  &:hover {
-    background: #fff;
-    color: #1c1c1c;
-    border: 2px solid #1c1c1c;
-    margin: 0;
+
+    &:hover {
+      background: #fff;
+      color: #1c1c1c;
+      border: 2px solid #1c1c1c;
+      margin: 0;
+    }
   }
 `;
 

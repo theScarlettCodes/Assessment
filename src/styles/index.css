@@ -1,7 +1,6 @@
 *{
   cursor: none;
   cursor: url(../assets/cursor-default.png), auto;
-  /* cursor: url(../assets/cursor-hoverLink.png), pointer; */
 
 }
 html {
@@ -22,7 +21,7 @@ code {
 }
 
 .selected {
-  background: #fff;
+  background: red;
   color: #1c1c1c;
   border: 2px solid #1c1c1c;
 }
