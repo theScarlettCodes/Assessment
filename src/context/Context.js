@@ -23,6 +23,9 @@ const GlobalStateProvider = ({ children }) => {
   // SETTING STATE OF CATEGORIES DISPLAY
   const [openCategories, setOpenCategories] = useState(false);
 
+  // SETTING STATE OF LOADER
+  const [loading, setLoading] = useState(true);
+
   //Use axios to get posts from api after Component render
   // the response with post data is passed to the central post state
 
@@ -33,6 +36,7 @@ const GlobalStateProvider = ({ children }) => {
       });
     };
     getAllPosts();
+    setLoading(false);
   }, []);
 
   //Use axios to get categories from api after DOM renders
@@ -79,6 +83,7 @@ const GlobalStateProvider = ({ children }) => {
   return (
     <GlobalStateContext.Provider
       value={{
+        loading,
         posts,
         pagination,
         categories,
