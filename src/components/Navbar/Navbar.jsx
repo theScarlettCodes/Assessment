@@ -99,11 +99,11 @@ const NavItem = styled.li`
 `;
 const NavLink = styled(Link)`
   & {
+    padding: 1rem;
     color: #1c1c1c;
     text-decoration: none;
   }
   &:hover {
-    cursor: url('../../assets/cursor-hoverLink.png'), auto;
     color: #24eba3;
   }
 `;

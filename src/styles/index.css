@@ -1,11 +1,11 @@
 *{
+  cursor: none;
   cursor: url(../assets/cursor-default.png), auto;
+  /* cursor: url(../assets/cursor-hoverLink.png), pointer; */
+
 }
 html {
   
-}
-a{
-  cursor: url(../assets/cursor-hoverLink.png), auto;
 }
 body {
   margin: 0;

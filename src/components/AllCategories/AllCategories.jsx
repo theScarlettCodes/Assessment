@@ -10,6 +10,9 @@ import styled from 'styled-components';
 // INCLUDE MOMENT
 import moment from 'moment/moment';
 
+// INCLUDE BUTTON
+import Button from '../Button/Button';
+
 // INCLUDE CONTEXT FILE
 import { GlobalStateContext } from '../../context/Context';
 
@@ -47,26 +50,23 @@ const AllCategories = () => {
                 ))}
               </PostTags>
 
-              <LinkButton to={`/posts/${post.id}`}>Read More</LinkButton>
+              <LinkButton to={`/posts/${post.id}`}>
+                <Button value={'Read More'} />
+              </LinkButton>
             </PostBody>{' '}
           </PostContainer>
         );
       })}
 
-      <Button onClick={() => loadMore()}> Load More </Button>
+      <ButtonContainer>
+        <Button actionHandler={() => loadMore()} value={'Load More'} />
+      </ButtonContainer>
     </PostSection>
   );
 };
 
 const LinkButton = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-self: center;
-  background: #24eba3;
-  width: auto;
-  margin: auto;
-  height: 2rem;
-  padding: 0.7rem 2rem;
+  width: 15rem;
   text-decoration: none;
   color: #fff;
   font-size: 1.3rem;
@@ -77,6 +77,12 @@ const PostSection = styled.section`
   flex-direction: column;
   flex: 80%;
   gap: 2rem;
+`;
+const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const PostContainer = styled.div`
   & {
@@ -123,21 +129,6 @@ const PostTags = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
   }
-`;
-const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #24eba3;
-  width: auto;
-  height: 2rem;
-  padding: 1.5rem;
-  margin: 2rem auto;
-  border: none;
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.3rem;
-  font-weight: 500;
 `;
 const TagItem = styled.div`
   background: #dcdcdc;

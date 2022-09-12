@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import AllCategories from '../AllCategories/AllCategories';
 import Categories from '../Categories/Categories';
 import NewCategories from '../NewCategories/NewCategories';
+import Button from '../Button/Button';
 
 // INCLUDE CONTEXTFILE
 import { GlobalStateContext } from '../../context/Context';
@@ -24,7 +25,9 @@ const Posts = () => {
 
   return (
     <Wrapper>
-      <Button onClick={() => showCategories()}>Categories</Button>
+      <ButtonContainer>
+        <Button onClick={() => showCategories()} value={'Categories'} />
+      </ButtonContainer>
 
       {openCategories && (
         <CategorySection>
@@ -71,19 +74,25 @@ const PostSection = styled.section`
   /* margin-top: 5rem; */
   z-index: 0;
 `;
-const Button = styled.button`
-  position: sticky;
-  top: 0;
-  background-color: #5c5aea;
-  margin-top: 3rem;
-  height: 3rem;
-  width: 50%;
-  color: #fff;
-  font-size: 1.5rem;
-  border: 2px solid #5c5aea;
-  -webkit-transition: background-color 0.5s, color 0.5s;
-  transition: background-color 0.5s, color 0.5s;
-  z-index: 10;
+const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+// const Button = styled.button`
+//   position: sticky;
+//   top: 0;
+//   background-color: #5c5aea;
+//   margin-top: 3rem;
+//   height: 3rem;
+//   width: 50%;
+//   color: #fff;
+//   font-size: 1.5rem;
+//   border: 2px solid #5c5aea;
+//   -webkit-transition: background-color 0.5s, color 0.5s;
+//   transition: background-color 0.5s, color 0.5s;
+//   z-index: 10;
+// `;
 
 export default Posts;

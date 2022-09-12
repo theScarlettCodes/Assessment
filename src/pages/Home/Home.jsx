@@ -9,6 +9,9 @@ import styled from 'styled-components';
 // Include image
 import LogoGif from '../../assets/lizardLogo.gif';
 
+// Include Button Component
+import Button from '../../components/Button/Button';
+
 const Home = () => {
   return (
     <>
@@ -19,9 +22,9 @@ const Home = () => {
 
           <ParagraphText>Thank You for this opportunity.</ParagraphText>
 
-          <Button>
-            <LinkButton to="/posts">Get Started</LinkButton>
-          </Button>
+          <LinkButton to="/posts">
+            <Button value={'Get Started'} />
+          </LinkButton>
         </TextSection>
 
         <PictureSection>
@@ -83,27 +86,9 @@ const TitleText = styled.h2`
 const ParagraphText = styled.p`
   font-size: 1.5rem;
 `;
-const Button = styled.button`
-  & {
-    background-color: #24eba3;
-    margin-top: 3rem;
-    padding: 1rem 0;
-    width: 50%;
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: 600;
-    border: none;
-  }
 
-  &:hover {
-    background: white;
-    color: #24eba3;
-    -webkit-transition: background-color 0.5s, color 0.5s;
-    transition: background-color 0.5s, color 0.5s;
-  }
-`;
 const LinkButton = styled(Link)`
-  color: #fff;
+  color: inherit;
   text-decoration: none;
 `;
 const PictureSection = styled.section`
