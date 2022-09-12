@@ -66,7 +66,7 @@ const NavWrapper = styled.main`
   flex-direction: row;
   align-items: center;
   width: 90%;
-  margin: 2rem auto;
+  margin: 0 auto;
 `;
 const Logo = styled.div`
   flex: 30%;

@@ -13,6 +13,7 @@ const CustomButton = styled.button`
     margin-top: 3rem;
     padding: 0.5rem 0.9rem;
     width: auto;
+    border: 2px solid #24eba3;
     font-size: 1rem;
     font-weight: 400;
     border: none;

@@ -26,7 +26,7 @@ const Posts = () => {
   return (
     <Wrapper>
       <ButtonContainer>
-        <Button onClick={() => showCategories()} value={'Categories'} />
+        <Button actionHandler={() => showCategories()} value={'Categories'} />
       </ButtonContainer>
 
       {openCategories && (
@@ -46,7 +46,7 @@ const Wrapper = styled.main`
   display: flex;
   gap: 1rem;
   width: 90%;
-  margin: 4rem auto;
+  margin: 0 auto;
   flex-direction: column;
 `;
 const CategorySection = styled.section`
@@ -75,10 +75,15 @@ const PostSection = styled.section`
   z-index: 0;
 `;
 const ButtonContainer = styled.div`
+  background: #fff;
+  position: sticky;
+  top: 0;
   width: 100%;
+  padding: 1rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 90;
 `;
 // const Button = styled.button`
 //   position: sticky;

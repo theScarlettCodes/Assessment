@@ -10,6 +10,9 @@ import { Link } from 'react-router-dom';
 // INCLUDE STYLED-COMPONENTS
 import styled from 'styled-components';
 
+// INCLUDE BUTTON
+import Button from '../Button/Button';
+
 // INCLUDE CONTEXT FILE
 import { GlobalStateContext } from '../../context/Context';
 
@@ -52,28 +55,25 @@ const NewCategories = () => {
                   ))}
                 </PostTags>
 
-                <LinkButton to={`/posts/${post.id}`}>Read More</LinkButton>
+                <LinkButton to={`/posts/${post.id}`}>
+                  <Button value={'Read More'} />
+                </LinkButton>
               </PostBody>{' '}
             </PostContainer>
           );
         })}
 
       {pagination < posts.filter((post) => isSelected(post)).length && (
-        <Button onClick={() => loadMore()}> Load More </Button>
+        <ButtonContainer>
+          <Button actionHandler={() => loadMore()} value={'Load More'} />
+        </ButtonContainer>
       )}
     </PostSection>
   );
 };
 
 const LinkButton = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-self: center;
-  background: #24eba3;
-  width: auto;
-  margin: auto;
-  height: 2rem;
-  padding: 0.7rem 2rem;
+  width: 15rem;
   text-decoration: none;
   color: #fff;
   font-size: 1.3rem;
@@ -129,20 +129,11 @@ const PostTags = styled.div`
     flex-direction: column;
   }
 `;
-const Button = styled.button`
+const ButtonContainer = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #24eba3;
-  width: auto;
-  height: 2rem;
-  padding: 1.5rem;
-  margin: auto;
-  border: none;
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.3rem;
-  font-weight: 500;
 `;
 const TagItem = styled.div`
   background: #dcdcdc;
