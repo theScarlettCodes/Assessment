@@ -1,16 +1,31 @@
-import React, { createContext, useState } from 'react';
-import axios from 'axios';
-import { useEffect } from 'react';
+// include createContext useState
+import React, { createContext, useState, useEffect } from 'react';
 
+// Include axios
+import axios from 'axios';
+
+// Initialize Context
 const GlobalStateContext = createContext();
 
 const GlobalStateProvider = ({ children }) => {
+  // Pagination State
   const [pagination, setPagination] = useState(10);
+
+  // Posts State
   const [posts, setPosts] = useState([]);
+
+  // Categories State
   const [categories, setCategories] = useState([]);
+
+  // Selected Category State
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  // GET ALL POSTS
+  // SETTING STATE OF CATEGORIES DISPLAY
+  const [openCategories, setOpenCategories] = useState(false);
+
+  //Use axios to get posts from api after Component render
+  // the response with post data is passed to the central post state
+
   useEffect(() => {
     const getAllPosts = async () => {
       await axios.get(`/api/posts`).then((response) => {
@@ -20,13 +35,18 @@ const GlobalStateProvider = ({ children }) => {
     getAllPosts();
   }, []);
 
-  // GET ALL CATEGORIES
+  //Use axios to get categories from api after DOM renders
+  // assigned the response data gotten from api to data constant, then initialize an array containing a string 'All'
+  // then loop the object from response to get the categories
+  // then loop through the categories checking if a category name already exists before pushing the category into the categoryList.
+  // then the categoryList is passed to the category state.
+  // This effect is run once on component render
   useEffect(() => {
     const getAllCategories = async () => {
       await axios.get(`/api/posts`).then((response) => {
-        const datas = response.data.posts;
+        const data = response.data.posts;
         let categoriesList = ['All'];
-        datas.forEach((category) => {
+        data.forEach((category) => {
           category.categories.forEach((category) => {
             if (!categoriesList.includes(category.name)) {
               categoriesList.push(category.name);
@@ -40,7 +60,9 @@ const GlobalStateProvider = ({ children }) => {
     getAllCategories();
   }, []);
 
-  // CHECK IF CATEGORY IS SELECTED
+  // isSelected function returns a boolean
+  // It takes the post as an argument and checks if any categories matches the selectedCategory
+  // If there is a match it returns truthy else falsy
   const isSelected = (post) => {
     return post.categories.some(
       (category) => category.name === selectedCategory
@@ -49,16 +71,24 @@ const GlobalStateProvider = ({ children }) => {
 
   // console.log(categories);
 
+  // DEFINING FUNCTION FOR CHANGING STATE OF CATEGORY DISPLAY
+  const showCategories = () => {
+    setOpenCategories(!openCategories);
+  };
+
   return (
     <GlobalStateContext.Provider
       value={{
         posts,
         pagination,
-        setPagination,
         categories,
         selectedCategory,
+        openCategories,
         setSelectedCategory,
         isSelected,
+        showCategories,
+        setPagination,
+        setOpenCategories,
       }}
     >
       {children}

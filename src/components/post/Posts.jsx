@@ -1,27 +1,32 @@
+// INCLUDE USECONTEXT AND USESTATE
 import React, { useContext, useState } from 'react';
+
+// INCLUDE LINK
 import { Link } from 'react-router-dom';
+
+// INCLUDE STYLED-COMPONENTS
 import styled from 'styled-components';
 
+// INCLUDE IMPORTS FROM COMPONENTS FOLDER
 import AllCategories from '../AllCategories/AllCategories';
 import Categories from '../Categories/Categories';
 import NewCategories from '../NewCategories/NewCategories';
 
+// INCLUDE CONTEXTFILE
 import { GlobalStateContext } from '../../context/Context';
 
 const Posts = () => {
-  const { selectedCategory } = useContext(GlobalStateContext);
+  // GETTING  STATE FROM CONTEXT FILE
+  const { selectedCategory, openCategories, showCategories } =
+    useContext(GlobalStateContext);
 
-  const [show, setShow] = useState(false);
-
-  const showCategories = () => {
-    setShow(!show);
-  };
+  // SETTING STATE OF CATEGORIES DISPLAY
 
   return (
     <Wrapper>
       <Button onClick={() => showCategories()}>Categories</Button>
 
-      {show && (
+      {openCategories && (
         <CategorySection>
           <Categories />
         </CategorySection>
@@ -42,13 +47,16 @@ const Wrapper = styled.main`
   flex-direction: column;
 `;
 const CategorySection = styled.section`
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  flex: 20%;
+  background: #bfc4cc8b;
+  display: flex;
   width: 100%;
-  text-align: center;
-  z-index: 1;
+  height: 100%;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-size: 3rem;
+  z-index: 99;
 
   @media (max-width: 768px) {
     /* display: none; */

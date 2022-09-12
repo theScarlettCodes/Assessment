@@ -1,9 +1,16 @@
+// INCLUDE USECONTEXT
 import React, { useContext } from 'react';
+
+// INCLUDE LINK AND USEPARAMS
 import { Link, useParams } from 'react-router-dom';
 
+// INCLUDE MOMENT
 import moment from 'moment';
+
+// INCLUDE STYLED-COMPONENTS
 import styled from 'styled-components';
 
+// INCLUDE CONTEXT FILE
 import { GlobalStateContext } from '../../context/Context';
 
 const Details = () => {
@@ -19,7 +26,7 @@ const Details = () => {
         .map((postDetail) => (
           <PostContainer key={postDetail?.id}>
             <PostHead>
-              <img src={postDetail?.author?.avatar} alt="image" />
+              <img src={postDetail?.author?.avatar} alt="author avatar" />
               <div className="nameAndDate">
                 <PostTitle>{postDetail?.author?.name}</PostTitle>
                 <PostDate>

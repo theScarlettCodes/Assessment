@@ -1,14 +1,24 @@
+// INCLUDE USECONTEXT
+import React, { useContext } from 'react';
+
+// INCLUDE MOMENT
 import moment from 'moment';
-import React, { useState, useContext } from 'react';
+
+// INCLUDE LINK
 import { Link } from 'react-router-dom';
 
+// INCLUDE STYLED-COMPONENTS
 import styled from 'styled-components';
 
+// INCLUDE CONTEXT FILE
 import { GlobalStateContext } from '../../context/Context';
 
 const NewCategories = () => {
+  // GETTING STATE VARIABLES FROM CONTEXT FILE
   const { isSelected, posts, pagination, setPagination } =
     useContext(GlobalStateContext);
+
+  // PAGINATION LOGIC FUNCTION CHECK IF POST LENGTH GREATER THAN POSTS DISPLAYED ON LOAD
   const loadMore = () => {
     if (pagination < posts.length) {
       setPagination(pagination + 10);
@@ -20,7 +30,6 @@ const NewCategories = () => {
         ?.filter((post) => isSelected(post))
         .slice(0, pagination)
         .map((post) => {
-          console.log(post);
           return (
             <PostContainer key={post.id}>
               <PostHead>

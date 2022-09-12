@@ -1,5 +1,6 @@
 import React from 'react';
 
+// INCLUDE STYLED-COMPONENTS
 import styled from 'styled-components';
 
 const Container = ({ children }) => {
@@ -8,7 +9,6 @@ const Container = ({ children }) => {
 
 const Wrapper = styled.main`
   background: #ffffff;
-  height: 90vh;
   width: 100%;
 `;
 

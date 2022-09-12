@@ -1,21 +1,39 @@
-import React, { useRef, useContext, useState } from 'react';
+// INCLUDE USEREF AND USECONTEXT HOOK
+import React, { useRef, useContext } from 'react';
 
+// INCLUDE SYTLED COMPONENTS
 import styled from 'styled-components';
+
+// INCLUDE CONTEXT FILE
 import { GlobalStateContext } from '../../context/Context';
 
 import styles from '../../styles/index.css';
 
 const Categories = () => {
-  const { selectedCategory, setSelectedCategory } =
+  const { selectedCategory, setSelectedCategory, showCategories } =
     useContext(GlobalStateContext);
 
   const ref = useRef(null);
 
+  // FUNCTION SETS THE ID OF THE CLICKED CATEGORY AND ASIGNS IT TO THE SELECTED-CATEGORY STATE
   const handleSelected = (e) => {
     setSelectedCategory(e.currentTarget.id);
 
     // console.log(ref.current.id);
   };
+
+  const Categories = [
+    'All',
+    'Surveys and Forms',
+    'Digital Marketing',
+    'Platform News and Updates',
+    'Tips and Best Practise',
+    'Data Management',
+    'Marketing Analytics',
+    'Landing Pages',
+    'Email Marketing',
+    'Marketing Automation',
+  ];
 
   console.log(selectedCategory);
 
@@ -23,160 +41,23 @@ const Categories = () => {
     <CategoryContainer>
       <CategoryTitle>Categories</CategoryTitle>
 
-      <CategoryItemContainer>
-        {/* Category 1 */}
-        <CategoryItem
-          ref={ref}
-          id="All"
-          onClick={(e) => {
-            handleSelected(e);
-          }}
-          // className={ === categorySelected ? styles.selected : null}
-        >
-          All
-        </CategoryItem>
-
-        {/* Category 2 */}
-        <CategoryItem
-          ref={ref}
-          id="Surveys and Forms"
-          onClick={(e) => {
-            handleSelected(e);
-          }}
-          // className={
-          //    === categorySelected ? styles.selected : null
-          // }
-        >
-          Surveys and Forms
-        </CategoryItem>
-        {/* Category 1 */}
-        <CategoryItem
-          ref={ref}
-          id="Digital Marketing"
-          onClick={(e) => {
-            handleSelected(e);
-          }}
-          // className={
-          //    === categorySelected ? styles.selected : null
-          // }
-        >
-          Digital Marketing
-        </CategoryItem>
-
-        {/* Category 2 */}
-        <CategoryItem
-          ref={ref}
-          id="Platform News and Updates"
-          onClick={(e) => {
-            handleSelected(e);
-          }}
-          // className={
-          //    === categorySelected ? styles.selected : null
-          // }
-        >
-          Platform News and Updates
-        </CategoryItem>
-        {/* Category 1 */}
-        <CategoryItem
-          ref={ref}
-          id="Tips and Best Practise"
-          onClick={(e) => {
-            handleSelected(e);
-          }}
-          // className={
-          //   ref.current.id === selectedCategory ? styles.selected : null
-          // }
-        >
-          Tips and Best Practise
-        </CategoryItem>
-
-        {/* Category 2 */}
-        <CategoryItem
-          ref={ref}
-          id="Data Management"
-          onClick={(e) => {
-            handleSelected(e);
-          }}
-          // className={
-          //   ref.current.id === selectedCategory ? styles.selected : null
-          // }
-        >
-          Data Management
-        </CategoryItem>
-        {/* Category 1 */}
-        <CategoryItem
-          ref={ref}
-          id="Marketing Analytics"
-          onClick={(e) => {
-            handleSelected(e);
-          }}
-          // className={
-          //   ref.current.id === selectedCategory ? styles.selected : null
-          // }
-        >
-          Marketing Analytics
-        </CategoryItem>
-
-        {/* Category 2 */}
-        <CategoryItem
-          ref={ref}
-          id="Landing Pages"
-          onClick={(e) => {
-            handleSelected(e);
-          }}
-          // className={
-          //   ref.current.id === selectedCategory ? styles.selected : null
-          // }
-        >
-          Landing Pages
-        </CategoryItem>
-        {/* Category 1 */}
-        <CategoryItem
-          ref={ref}
-          id="Ecommerce"
-          onClick={(e) => {
-            handleSelected(e);
-          }}
-          // className={
-          //   ref.current.id === selectedCategory ? styles.selected : null
-          // }
-        >
-          Ecommerce
-        </CategoryItem>
-
-        {/* Category 2 */}
-        <CategoryItem
-          ref={ref}
-          id="Email Marketing"
-          onClick={(e) => {
-            handleSelected(e);
-          }}
-          // className={
-          //   ref.current.id === selectedCategory ? styles.selected : null
-          // }
-        >
-          Email Marketing
-        </CategoryItem>
-
-        {/* Category 2 */}
-        <CategoryItem
-          ref={ref}
-          id="Marketing Automation"
-          onClick={(e) => {
-            handleSelected(e);
-          }}
-          // className={
-          //   ref.current.id === selectedCategory ? styles.selected : null
-          // }
-        >
-          Marketing Automation
-        </CategoryItem>
+      <CategoryItemContainer onClick={showCategories}>
+        {Categories.map((category) => (
+          <CategoryItem
+            key={category.id}
+            id={category.toString()}
+            onClick={handleSelected}
+          >
+            {category}
+          </CategoryItem>
+        ))}{' '}
       </CategoryItemContainer>
     </CategoryContainer>
   );
 };
 
 const CategoryContainer = styled.div`
+  width: 100%;
   background: #fff;
   height: auto;
   padding: 1rem;
@@ -185,11 +66,13 @@ const CategoryContainer = styled.div`
 const CategoryTitle = styled.h2`
   margin-top: 0;
   margin-bottom: 1rem;
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     display: none;
-  }
+  } */
 `;
 const CategoryItemContainer = styled.div`
+  width: 100%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;

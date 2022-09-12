@@ -1,10 +1,16 @@
-import React, { useState, useContext } from 'react';
+// INCLUDE USECONTEXT HOOK
+import React, { useContext } from 'react';
+
+// INCLUDE LINK
 import { Link } from 'react-router-dom';
 
+// INCLUDE STYLED COMPONENTS
 import styled from 'styled-components';
 
+// INCLUDE MOMENT
 import moment from 'moment/moment';
 
+// INCLUDE CONTEXT FILE
 import { GlobalStateContext } from '../../context/Context';
 
 const AllCategories = () => {
