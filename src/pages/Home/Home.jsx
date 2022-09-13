@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { GlobalStateContext } from '../../context/Context';
-
 // Include Link
 import { Link } from 'react-router-dom';
 
@@ -13,10 +11,8 @@ import LogoGif from '../../assets/lizardLogo.gif';
 
 // Include Button Component
 import Button from '../../components/Button/Button';
-import { useContext } from 'react';
 
 const Home = () => {
-  const { loading } = useContext(GlobalStateContext);
   return (
     <>
       <Color></Color>

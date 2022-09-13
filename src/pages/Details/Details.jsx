@@ -12,6 +12,7 @@ import styled from 'styled-components';
 
 // INCLUDE CONTEXT FILE
 import { GlobalStateContext } from '../../context/Context';
+import Button from '../../components/Button/Button';
 
 const Details = () => {
   const { posts } = useContext(GlobalStateContext);
@@ -49,21 +50,23 @@ const Details = () => {
             </PostBody>{' '}
           </PostContainer>
         ))}
-
-      <LinkButton to={`/`}>Back to Home</LinkButton>
+      <ButtonContainer>
+        <LinkButton to={`/`}>
+          <Button value={'Back to Home'} />
+        </LinkButton>
+      </ButtonContainer>
     </PostSection>
   );
 };
 
-const LinkButton = styled(Link)`
+const ButtonContainer = styled.div`
+  width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-self: center;
-  background: #24eba3;
-  width: auto;
-  margin: auto;
-  height: 2rem;
-  padding: 0.7rem 2rem;
+`;
+const LinkButton = styled(Link)`
+  width: 15rem;
   text-decoration: none;
   color: #fff;
   font-size: 1.3rem;
